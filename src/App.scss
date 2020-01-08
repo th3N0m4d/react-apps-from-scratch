@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'Linearicons-Free';	
+		src:url('fonts/Linearicons-Free.woff2') format('woff2'),
+		url('fonts/Linearicons-Free.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.lnr-clock:before {
+	content: "\e864";
+}
+
+body {
+	font-family: "Linearicons-Free";
+    background-image: url(./let-there-be-sun.png);
+    color: #1f2d3d;
+} 
+

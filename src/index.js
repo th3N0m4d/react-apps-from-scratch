@@ -1,10 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import './App.css'
+import './App.scss'
 
 const App = () => (
-  <div>Hello world!</div>
+  <div>
+    <span className='lnr lnr-clock' /> lnr-clock
+  </div>
 )
 
 render(
