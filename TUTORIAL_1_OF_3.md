@@ -24,19 +24,20 @@ According to the official webpack v4 docs:
 
 > Out of the box, webpack won't require you to use a configuration file. However, it will assume the entry point of your project is `src/index` and will output the result in `dist/main.js` minified and optimized for production.
 
-From the docs, we understand that webpack expects that the entry file is named index.js and it resides inside of a folder named src.
+From the docs, we understand that webpack expects that the entry file is named index.js and that this file resides in a folder named src.
 
 Let's go ahead and create both this directory along with the entry file:
 
 ```bash
 $ mkdir src
 $ touch src/index.js
-$ open src/index.js
 ```
 
 For demonstration purposes, let's `console.log` the ubiquitous "Hello world!" message. 
 
-### ./src/index.js
+```bash
+$ open src/index.js
+```
 
 ```js
 console.log('Hello world!')
@@ -48,7 +49,7 @@ On the terminal run `$ yarn webpack` and check your project folder. You will not
 
 ## Setting up a minimal React app
 
-We'll start by installing the absolute minimal dependencies to run our React project:
+We'll start by installing the absolute minimal dependencies to run and build React apps:
 
 ```bash
 $ yarn add react react-dom
@@ -60,7 +61,7 @@ $ yarn add @babel/core @babel/preset-env @babel/preset-react babel-loader -D
 - **@babel/core, @babel/preset-env, babel-loader:** These three packages are commonly installed together whenever you want to take advantage of the latest Javascript features without worrying about backward compatibility with older browsers;
 - **@babel/preset-react:** Allows Babel to transform .jsx files into regular javascript files;
 
-At this point, we have installed all the necessary packages to create a basic React component and render it into the browser. The only thing we need to do is tell webpack how this is going to happen.
+At this point, we have installed all the necessary packages to create a basic React component. The only thing we need to do is tell webpack how this is going to happen.
 
 Start by creating the configuration file:
 
@@ -68,8 +69,10 @@ Start by creating the configuration file:
 $ touch webpack.config.js
 $ open webpack.config.js
 ```
+Copy and paste the code below into this file. 
 
-### #1 ./webpack.config.js
+> **Note:** Don't worry about if this configuration file at this point. Suffice it to say that we are telling webpack that files ending with .jsx and .js should be loaded by `babel-loader` along with its presets.
+
 ```js
 module.exports = {
   module: {
@@ -92,10 +95,11 @@ module.exports = {
 }
 ```
 
-> Check the official  [webpack docs](https://webpack.js.org/concepts/) for more information on how to structure your config file and what each object expects/does.
+With the configuration file in place, we just need to write a very basic component and have it loaded on an html page:
 
-
-### #2. ./src/index.js
+```bash
+$ open src/index.js
+```
 
 ```js
 import React from 'react'
@@ -111,8 +115,12 @@ render(
 )
 ```
 
+Start by creating a basic html page and placing it into the dist folder for the moment. 
 
-### #3 ./dist/index.html
+```bash
+$ touch dist/index.html
+```
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -120,7 +128,9 @@ render(
     <title></title>
 </head>
 <body>
+	<!-- The container that will load React into the page -->
     <div id='app' />
+    <!-- This is our bundled application -->
     <script src="main.js"></script>
 </body>
 </html>
@@ -128,8 +138,10 @@ render(
 
 Time to render our modest component into the browser:
 
-1. `$ yarn webpack`
-2. `$ open dist/index.html`
+```bash
+$ yarn webpack
+$ open dist/index.html
+```
 
 If everything went well, you should see that our React component was rendered correctly.
 
