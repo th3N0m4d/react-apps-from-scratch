@@ -1,4 +1,3 @@
-# Setting up a minimal React app from scratch - Part 2/3
 
 In part one of this series, we learned the bare minimum configuration and setup to build our very first React component and have it rendered into the browser. 
 
@@ -55,7 +54,8 @@ $ open package.json
 {
   ...
   "scripts": {
-    "build": "yarn webpack --watch"
+    "build": "webpack",
+    "build": "webpack --watch"
   },
   ...
  }
@@ -296,5 +296,4 @@ render(
 In this tutorial, we learned that thanks to Loaders, we can import and transform files by simply defining which extensions our loader has to load from.
 
 Up to this point, our project supports compiling .jsx files to regular js, .scss into .css  and also loading assets such as images and fonts. 
-
-In the next and final part of this tutorial, we'll set up Jest with Enzyme and add Plugins to automate some tasks for us, such as cleaning the dist directory before every build and moving our index.html file to dist among other things.  
+ 

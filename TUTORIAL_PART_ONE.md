@@ -1,5 +1,3 @@
-# Setting up a minimal React app from scratch - Part 1/3
-
 Creating React apps nowadays is fairly straightforward thanks to the amazing create-react-app CLI (CRA for short). If you are not familiar with CRA you can learn more about it [here](https://create-react-app.dev/docs/getting-started/). 
 
 With CRA you can build and test React apps with ease without requiring any configuration at all. Still, you might find yourself having to deal with some configuration down the road because not every React project is created equal. Also, learning the basics of what happens under the hood allows you to fully customize your project to fit your needs. 
@@ -71,7 +69,7 @@ $ open webpack.config.js
 ```
 Copy and paste the code below into this file. 
 
-> **Note:** Don't worry about if this configuration file at this point. Suffice it to say that we are telling webpack that files ending with .jsx and .js should be loaded by `babel-loader` along with its presets.
+> **Note:** Don't worry about the configuration file at this point. Suffice it to say that we are telling webpack that files ending with .jsx and .js should be loaded by `babel-loader` along with its presets.
 
 ```js
 module.exports = {
@@ -147,6 +145,4 @@ If everything went well, you should see that our React component was rendered co
 
 ## Conclusion
 
-In this short tutorial, we had a gentle introduction to webpack and what are the minimal packages that we need to build a basic React component.
-
-In the next section, we'll be exploring how to manage our application assets. Last but not least, we'll install and configure Jest, Enzyme, and PropTypes.
+In this short tutorial, we had a gentle introduction to a basic webpack configuration and the minimal packages that we need to build a basic React component.
