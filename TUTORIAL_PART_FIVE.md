@@ -1,10 +1,9 @@
+
 ## Environment variables
 
-When developing an application, you usually define a context for running your code in, such as development or production. You do not test your application against the production database, as an extreme example. 
+When developing an application, we must make a distinction between production and development environments. This is where environment variables come in handy. You probably encountered such variables before such as `PATH` or `PORT`. 
 
-It's common to use the variables defined by your system, such as `PATH` or `PORT`. Often times you end up creating your own (i.e. database connection strings).
-
-In this part of the tutorial, we'll install and setup `dotenv` and create its context file from which its configuration will be loaded from.
+In this part of the tutorial, we'll install and setup `dotenv` and create its environment file with a few variables.
 
 ### Installing the dependencies
 
@@ -34,10 +33,12 @@ $ touch .env
 $ open .env
 ```
 ```text
+# Overrides the NODE_ENV and PORT number
 NODE_ENV=development
+PORT=9000
 ```
 
-> **Warning:** It's recommended that you do not add this .env file to your repo because of the sensitive information it might contain.
+> **Warning:** It's recommended that you do not add this .env file to your repo because of the sensitive information it might contain (e.g, connection strings, username and password...).
 
 ### Untrack .env (recommended)
 ```bash
@@ -49,9 +50,9 @@ dist
 .env
 ```
 
-## Serving files from a local server
+## Serving files from dev server
 
-So far we've been testing our app by going to the dist folder and opening index.html file with a browser. 
+So far we've been testing our app by going to the dist folder and opening index.html file from our favorite browser. 
 
 There's a much easier and better way to do that: enter WebpackDevServer.
 
@@ -81,6 +82,8 @@ $ yarn add webpack-dev-server -D
 $ yarn start
 ```
 
+![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/vep2txsg2drlnjopuphf.png)
+
 ### Configuration
 
 WebpackDevServer is highly [configurable](https://webpack.js.org/configuration/dev-server/). If you want to override its default behavior, such as the port number or whether to serve your app in a new browser tab, you just need to provide it under `devServer`, like in the example below:
@@ -92,12 +95,23 @@ $ open webpack.config.js
 // ...
 // Content omitted for better readability
 
+/*
+	1. Destruct process.env object
+	2. Rename PORT to port
+	3. Rename NODE_ENV to mode
+*/
+const {
+  PORT: port,
+  NODE_ENV: mode
+} = process.env
+
 const devServer = {
-  port: 9000,
+  port,
   open: true
 }
 
 module.exports  = {
+	mode,
 	devServer,
 	// ...
 }
@@ -106,8 +120,8 @@ module.exports  = {
 $ yarn start
 ```
 
+![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/f0jfq44mijsceongdkq9.png)
+
 ## Conclusion
 
-In this tutorial we learned how to work with environment variables and how to serve our app with Webpack's dev server. 
-
-In the next section we'll explore the basics of code splitting and optimization in general.
+In this tutorial, we learned how to work with environment variables and how to serve our app with Webpack's dev server. 

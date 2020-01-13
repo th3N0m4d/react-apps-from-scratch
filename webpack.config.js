@@ -6,6 +6,11 @@ require('dotenv').config()
 
 const APP_DIR = path.join(__dirname, 'src')
 
+const {
+  PORT: port,
+  NODE_ENV: mode
+} = process.env
+
 const plugins = [
   new HtmlWebPackPlugin({
     template: `${APP_DIR}/index.html`
@@ -14,17 +19,15 @@ const plugins = [
 ]
 
 const devServer = {
-  port: 9000,
+  port,
   open: true,
   compress: true
 }
 
-const mode = process.env.NODE_ENV
-
 module.exports = {
+  mode,
   devServer,
   plugins,
-  mode,
   module: {
     rules: [
       {
