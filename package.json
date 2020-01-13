@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "build": "webpack",
-    "build:watch": "webpack --watch",
-    "test": "jest",
-    "test:watch": "jest --watchAll"
+    "build": "yarn lint && yarn test && webpack",
+    "build:watch": "yarn build --watch",
+    "test": "yarn lint && yarn jest",
+    "test:watch": "jest --watchAll",
+    "lint": "standard"
   },
   "jest": {
     "moduleNameMapper": {
@@ -17,6 +18,15 @@
       "<rootDir>/node_modules/"
     ]
   },
+  "standard": {
+    "parser": "babel-eslint",
+    "env": [
+      "jest"
+    ],
+    "ignore": [
+      "dist/**"
+    ]
+  },
   "babel": {
     "presets": [
       "@babel/env",
@@ -28,6 +38,7 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@types/jest": "^24.0.25",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
@@ -40,6 +51,7 @@
     "jest-enzyme": "^7.1.2",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
+    "standard": "^14.3.1",
     "style-loader": "^1.1.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
