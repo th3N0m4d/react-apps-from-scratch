@@ -24,10 +24,15 @@ const devServer = {
   compress: true
 }
 
+const resolve = {
+  extensions: ['.js', '.jsx']
+}
+
 module.exports = {
   mode,
   devServer,
   plugins,
+  resolve,
   module: {
     rules: [
       {
